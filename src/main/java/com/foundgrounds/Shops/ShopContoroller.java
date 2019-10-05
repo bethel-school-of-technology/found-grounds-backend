@@ -9,4 +9,6 @@ public class ShopContoroller {
 
 	@Autowired
 	ShopRepository doa;
+	
+	
 }
