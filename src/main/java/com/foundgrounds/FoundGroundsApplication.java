@@ -1,4 +1,4 @@
-package com.foundgrounds.models;
+package com.foundgrounds;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
