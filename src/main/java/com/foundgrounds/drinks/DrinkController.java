@@ -36,7 +36,7 @@ public class DrinkController {
 			Drink foundDrink = dao.findById(id).orElse(null);
 
 			if (foundDrink == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Drink", "Nothing found with that id").build();
 			}
 			return ResponseEntity.ok(foundDrink);
 		}
@@ -55,7 +55,7 @@ public class DrinkController {
 		public ResponseEntity<Drink> putDrink(@PathVariable Integer id, @RequestBody Drink drinks) {
 			Drink foundDrink = dao.findById(id).orElse(null);
 			if (foundDrink == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Drink", "Nothing found with that id").build();
 			} else {
 				if (User.getUsername() != null) {
 					User.setUsername(User.getUsername());
@@ -73,7 +73,7 @@ public class DrinkController {
 			Drink foundDrink = dao.findById(id).orElse(null);
 
 			if (foundDrink == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Drink", "Nothing found with that id").build();
 			} else {
 				dao.delete(foundDrink);
 			}

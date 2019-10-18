@@ -36,7 +36,7 @@ public class FoodController {
 			Food foundFood = dao.findById(id).orElse(null);
 
 			if (foundFood == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Food", "Nothing found with that id").build();
 			}
 			return ResponseEntity.ok(foundFood);
 		}
@@ -55,7 +55,7 @@ public class FoodController {
 		public ResponseEntity<Food> putFood(@PathVariable Integer id, @RequestBody Food food) {
 			Food foundFood = dao.findById(id).orElse(null);
 			if (foundFood == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Food", "Nothing found with that id").build();
 			} else {
 				if (User.getUsername() != null) {
 					User.setUsername(User.getUsername());
@@ -73,7 +73,7 @@ public class FoodController {
 			Food foundFood = dao.findById(id).orElse(null);
 
 			if (foundFood == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Food", "Nothing found with that id").build();
 			} else {
 				dao.delete(foundFood);
 			}

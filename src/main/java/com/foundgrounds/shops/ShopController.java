@@ -36,7 +36,7 @@ public class ShopController {
 			Shop foundShop = dao.findById(id).orElse(null);
 
 			if (foundShop == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
 			}
 			return ResponseEntity.ok(foundShop);
 		}
@@ -55,7 +55,7 @@ public class ShopController {
 		public ResponseEntity<Shop> putShop(@PathVariable Integer id, @RequestBody Shop shops) {
 			Shop foundShop = dao.findById(id).orElse(null);
 			if (foundShop == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
 			} else {
 				if (User.getUsername() != null) {
 					User.setUsername(User.getUsername());
@@ -73,7 +73,7 @@ public class ShopController {
 			Shop foundShop = dao.findById(id).orElse(null);
 
 			if (foundShop == null) {
-				return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
 			} else {
 				dao.delete(foundShop);
 			}

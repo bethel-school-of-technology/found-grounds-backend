@@ -34,7 +34,7 @@ public class UserController {
 		User foundMessage = dao.findById(id).orElse(null);
 
 		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		}
 		return ResponseEntity.ok(foundMessage);
 	}
@@ -53,7 +53,7 @@ public class UserController {
 	public ResponseEntity<User> putMessage(@PathVariable Long id, @RequestBody User message) {
 		User foundMessage = dao.findById(id).orElse(null);
 		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
 			if (User.getUsername() != null) {
 				User.setUsername(User.getUsername());
@@ -71,7 +71,7 @@ public class UserController {
 		User foundMessage = dao.findById(id).orElse(null);
 
 		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
 			dao.delete(foundMessage);
 		}
