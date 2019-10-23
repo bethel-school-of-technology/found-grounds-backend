@@ -29,6 +29,7 @@ public class User {
 	private String imageUrl;
 	private Boolean deleted;
 	private Date dateJoined;
+	private String bio;
 	
 	
 	public Integer getUserID() {
@@ -144,6 +145,12 @@ public class User {
 	}
 	public void setDateJoined(Date dateJoined) {
 		this.dateJoined = dateJoined;
+	}
+	public String getBio() {
+		return bio;
+	}
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 	
 	
