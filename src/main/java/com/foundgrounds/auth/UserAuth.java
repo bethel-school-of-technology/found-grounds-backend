@@ -3,6 +3,7 @@ package com.foundgrounds.auth;
 import javax.persistence.*;
 
 @Entity
+@Table(name="UserAuth")
 public class UserAuth {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
