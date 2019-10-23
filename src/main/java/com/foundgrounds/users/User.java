@@ -1,5 +1,7 @@
 package com.foundgrounds.users;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,112 +10,143 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer UserID;
-	private Integer RolesID;
-	private String Email;
-	private static String Username;
-	private static String Password;
-	private String AuthToken;
-	private String FirstName;
-	private String LastName;
-	private Boolean CanAdvertise; 
-	private String StreetAddress1;
-	private String StreetAddress2;
-	private String City;
-	private String State; 
-	private Integer Zip;
-	private Boolean AmHome;
+	private Integer userID;
+	private Integer rolesID;
+	private String email;
+	private static String username;
+	private static String password;
+	private String authToken;
+	private String firstName;
+	private String lastName;
+	private Boolean canAdvertise; 
+	private String streetAddress1;
+	private String streetAddress2;
+	private String city;
+	private String state; 
+	private Integer zip;
+	private Boolean amHome;
+	private Date birthday;
+	private String imageUrl;
+	private Boolean deleted;
+	private Date dateJoined;
 	
 	
 	public Integer getUserID() {
-		return UserID;
+		return userID;
 	}
 	public void setUserID(Integer userID) {
-		UserID = userID;
+		this.userID = userID;
 	}
 	public Integer getRolesID() {
-		return RolesID;
+		return rolesID;
 	}
 	public void setRolesID(Integer rolesID) {
-		RolesID = rolesID;
+		this.rolesID = rolesID;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public static String getUsername() {
-		return Username;
+		return username;
 	}
 	public static void setUsername(String username) {
-		Username = username;
+		User.username = username;
 	}
 	public static String getPassword() {
-		return Password;
+		return password;
 	}
 	public static void setPassword(String password) {
-		Password = password;
+		User.password = password;
 	}
 	public String getAuthToken() {
-		return AuthToken;
+		return authToken;
 	}
 	public void setAuthToken(String authToken) {
-		AuthToken = authToken;
+		this.authToken = authToken;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	public Boolean getCanAdvertise() {
-		return CanAdvertise;
+		return canAdvertise;
 	}
 	public void setCanAdvertise(Boolean canAdvertise) {
-		CanAdvertise = canAdvertise;
+		this.canAdvertise = canAdvertise;
 	}
 	public String getStreetAddress1() {
-		return StreetAddress1;
+		return streetAddress1;
 	}
 	public void setStreetAddress1(String streetAddress1) {
-		StreetAddress1 = streetAddress1;
+		this.streetAddress1 = streetAddress1;
 	}
 	public String getStreetAddress2() {
-		return StreetAddress2;
+		return streetAddress2;
 	}
 	public void setStreetAddress2(String streetAddress2) {
-		StreetAddress2 = streetAddress2;
+		this.streetAddress2 = streetAddress2;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public Integer getZip() {
-		return Zip;
+		return zip;
 	}
 	public void setZip(Integer zip) {
-		Zip = zip;
+		this.zip = zip;
 	}
 	public Boolean getAmHome() {
-		return AmHome;
+		return amHome;
 	}
 	public void setAmHome(Boolean amHome) {
-		AmHome = amHome;
+		this.amHome = amHome;
 	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public Boolean getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+	public Date getDateJoined() {
+		return dateJoined;
+	}
+	public void setDateJoined(Date dateJoined) {
+		this.dateJoined = dateJoined;
+	}
+	
+	
+
 	
 }

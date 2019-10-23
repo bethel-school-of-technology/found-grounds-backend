@@ -9,124 +9,96 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CoffeeShops")
+@Table(name="Shops")
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer ShopID;
-	private Integer DrinkID;
-	private Integer FoodID;
-	private Integer SpecialsID;
-	private Integer EventsID;
-	private String Name;
-	private String Tagline;
-	private Date HoursOfOp;
-	private String StreetAddress1;
-	private String StreetAddress2;
-	private String City;
-	private String State;
-	private Integer Zip;
-	private String MapsLocationInfo;
-	private Boolean IsOpen;
-	private Integer NumVisits;
-	
+	private Integer shopID;
+    private String about;
+	private String name;
+	private String streetAddress1;
+	private String streetAddress2;
+	private String city;
+	private String state;
+	private Integer zip;
+	private Date hoursOfOperation;
+	private Integer rating;
+	private String imageUrl;
+	private Boolean deleted;
 	
 	public Integer getShopID() {
-		return ShopID;
+		return shopID;
 	}
 	public void setShopID(Integer shopID) {
-		ShopID = shopID;
+		this.shopID = shopID;
 	}
-	public Integer getDrinkID() {
-		return DrinkID;
+	public String getAbout() {
+		return about;
 	}
-	public void setDrinkID(Integer drinkID) {
-		DrinkID = drinkID;
-	}
-	public Integer getFoodID() {
-		return FoodID;
-	}
-	public void setFoodID(Integer foodID) {
-		FoodID = foodID;
-	}
-	public Integer getSpecialsID() {
-		return SpecialsID;
-	}
-	public void setSpecialsID(Integer specialsID) {
-		SpecialsID = specialsID;
-	}
-	public Integer getEventsID() {
-		return EventsID;
-	}
-	public void setEventsID(Integer eventsID) {
-		EventsID = eventsID;
+	public void setAbout(String about) {
+		this.about = about;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
-	}
-	public String getTagline() {
-		return Tagline;
-	}
-	public void setTagline(String tagline) {
-		Tagline = tagline;
-	}
-	public Date getHoursOfOp() {
-		return HoursOfOp;
-	}
-	public void setHoursOfOp(Date hoursOfOp) {
-		HoursOfOp = hoursOfOp;
+		this.name = name;
 	}
 	public String getStreetAddress1() {
-		return StreetAddress1;
+		return streetAddress1;
 	}
 	public void setStreetAddress1(String streetAddress1) {
-		StreetAddress1 = streetAddress1;
+		this.streetAddress1 = streetAddress1;
 	}
 	public String getStreetAddress2() {
-		return StreetAddress2;
+		return streetAddress2;
 	}
 	public void setStreetAddress2(String streetAddress2) {
-		StreetAddress2 = streetAddress2;
+		this.streetAddress2 = streetAddress2;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public Integer getZip() {
-		return Zip;
+		return zip;
 	}
 	public void setZip(Integer zip) {
-		Zip = zip;
+		this.zip = zip;
 	}
-	public String getMapsLocationInfo() {
-		return MapsLocationInfo;
+	public Date getHoursOfOperation() {
+		return hoursOfOperation;
 	}
-	public void setMapsLocationInfo(String mapsLocationInfo) {
-		MapsLocationInfo = mapsLocationInfo;
+	public void setHoursOfOperation(Date hoursOfOperation) {
+		this.hoursOfOperation = hoursOfOperation;
 	}
-	public Boolean getIsOpen() {
-		return IsOpen;
+	public Integer getRating() {
+		return rating;
 	}
-	public void setIsOpen(Boolean isOpen) {
-		IsOpen = isOpen;
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
-	public Integer getNumVisits() {
-		return NumVisits;
+	public String getImageUrl() {
+		return imageUrl;
 	}
-	public void setNumVisits(Integer numVisits) {
-		NumVisits = numVisits;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
+	public Boolean getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+	
 	
 	
 }

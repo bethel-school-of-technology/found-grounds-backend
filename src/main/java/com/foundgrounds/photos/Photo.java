@@ -1,5 +1,7 @@
 package com.foundgrounds.photos;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,58 +14,50 @@ public class Photo {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer PhotoID;
-    private Integer FoodID;
-    private Integer DrinkID;
-    private String Path;
-    private String Caption;
-    private Boolean IsDrink; 
-    private Boolean IsFood;
-	
-    
-    public Integer getPhotoID() {
-		return PhotoID;
-	}
-	public void setPhotoID(Integer photoID) {
-		PhotoID = photoID;
-	}
-	public Integer getFoodID() {
-		return FoodID;
-	}
-	public void setFoodID(Integer foodID) {
-		FoodID = foodID;
-	}
-	public Integer getDrinkID() {
-		return DrinkID;
-	}
-	public void setDrinkID(Integer drinkID) {
-		DrinkID = drinkID;
-	}
-	public String getPath() {
-		return Path;
-	}
-	public void setPath(String path) {
-		Path = path;
-	}
-	public String getCaption() {
-		return Caption;
-	}
-	public void setCaption(String caption) {
-		Caption = caption;
-	}
-	public Boolean getIsDrink() {
-		return IsDrink;
-	}
-	public void setIsDrink(Boolean isDrink) {
-		IsDrink = isDrink;
-	}
-	public Boolean getIsFood() {
-		return IsFood;
-	}
-	public void setIsFood(Boolean isFood) {
-		IsFood = isFood;
-	}
+    private Integer photoId;
+    private Integer postId;
+    private Integer shopId;
+    private String imageUrl;
+    private Boolean deleted;
+    private Date timePosted;
     
     
+	public Integer getPhotoId() {
+		return photoId;
+	}
+	public void setPhotoId(Integer photoId) {
+		this.photoId = photoId;
+	}
+	public Integer getPostId() {
+		return postId;
+	}
+	public void setPostId(Integer postId) {
+		this.postId = postId;
+	}
+	public Integer getShopId() {
+		return shopId;
+	}
+	public void setShopId(Integer shopId) {
+		this.shopId = shopId;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public Boolean getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+	public Date getTimePosted() {
+		return timePosted;
+	}
+	public void setTimePosted(Date timePosted) {
+		this.timePosted = timePosted;
+	}
+   
 
 }
