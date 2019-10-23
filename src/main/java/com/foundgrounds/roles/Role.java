@@ -12,27 +12,29 @@ public class Role {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer RolesID;
-	private String Description;
-	private Boolean IsActive;
+	private Integer rolesId;
+	private String description;
+	private Boolean isActive;
 	
-	public Integer getRolesID() {
-		return RolesID;
+	public Integer getRolesId() {
+		return rolesId;
 	}
-	public void setRolesID(Integer rolesID) {
-		RolesID = rolesID;
+	public void setRolesId(Integer rolesId) {
+		this.rolesId = rolesId;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public Boolean getIsActive() {
-		return IsActive;
+		return isActive;
 	}
 	public void setIsActive(Boolean isActive) {
-		IsActive = isActive;
-	} 
+		this.isActive = isActive;
+	}
+	
+
 
 }
