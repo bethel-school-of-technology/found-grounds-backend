@@ -1,5 +1,8 @@
 package com.foundgrounds.comments;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,39 +25,42 @@ import com.foundgrounds.users.User;
 public class CommentController {
 
 	@Autowired
-	PostRepository dao;
+	CommentRepository dao;
 
-	@GetMapping("/posts")
-	public List<Comment> getPost() {
-		List<Comment> foundMessages = dao.findAll();
-		return foundMessages;
+	@GetMapping("/comments")
+	public List<Comment> getComment() {
+		List<Comment> foundComments = dao.findAll();
+		return foundComments;
 	}
 
-	@GetMapping("/posts/{id}")
-	public ResponseEntity<Comment> getUser(@PathVariable(value = "id") Integer id) {
-		Comment foundMessage = dao.findById(id).orElse(null);
+	@GetMapping("/comments/{id}")
+	public ResponseEntity<Comment> getUser(@PathVariable(value = "id") Long id) {
+		Comment foundComment = dao.findById(id).orElse(null);
 
-		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+		if (foundComment == null) {
+			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
 		}
-		return ResponseEntity.ok(foundMessage);
+		return ResponseEntity.ok(foundComment);
 	}
 
-	@PostMapping("/posts/{id}")
-	public ResponseEntity<Comment> postMessage(@RequestBody Comment message) {
-
+	@PostMapping("/comments/{id}")
+	public ResponseEntity<Comment> postComment(@RequestBody Comment comment) {
+		// Sets the date and time of each comment
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+        comment.setTimePosted(dateFormat.format(date));
 		// saving to DB using instance of the repo interface
-		Comment createdMessage = dao.save(message);
+		Comment createdComment = dao.save(comment);
 
 		// RespEntity crafts response to include correct status codes.
-		return ResponseEntity.ok(createdMessage);
+		return ResponseEntity.ok(createdComment);
 	}
 
-	@PutMapping("/posts/{id}")
-	public ResponseEntity<Comment> putMessage(@PathVariable Integer id, @RequestBody Comment message) {
-		Comment foundMessage = dao.findById(id).orElse(null);
-		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+	@PutMapping("/comments/{id}")
+	public ResponseEntity<Comment> putComment(@PathVariable Long id, @RequestBody Comment comment) {
+		Comment foundComment = dao.findById(id).orElse(null);
+		if (foundComment == null) {
+			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
 		} else {
 			if (User.getUsername() != null) {
 				User.setUsername(User.getUsername());
@@ -62,19 +68,19 @@ public class CommentController {
 			if (User.getPassword() != null) {
 				User.setPassword(User.getPassword());
 			}
-			dao.save(foundMessage);
+			dao.save(foundComment);
 		}
-		return ResponseEntity.ok(foundMessage);
+		return ResponseEntity.ok(foundComment);
 	}
 
-	@DeleteMapping("/post/{id}")
-	public ResponseEntity<Comment> deleteMessage(@PathVariable(value = "id") Integer id) {
-		Comment foundMessage = dao.findById(id).orElse(null);
+	@DeleteMapping("/comments/{id}")
+	public ResponseEntity<Comment> deleteComment(@PathVariable(value = "id") Long id) {
+		Comment foundComment = dao.findById(id).orElse(null);
 
-		if (foundMessage == null) {
-			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
+		if (foundComment == null) {
+			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
 		} else {
-			dao.delete(foundMessage);
+			dao.delete(foundComment);
 		}
 		return ResponseEntity.ok().build();
 	}

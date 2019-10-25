@@ -1,8 +1,6 @@
 package com.foundgrounds.comments;
 
 
-import java.sql.Date;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +14,7 @@ public class Comment {
     private Integer userId;
     private String text;
     private Boolean deleted; 
-    private Date timePosted;
+    private String timePosted;
     
     
 	public Integer getCommentId() {
@@ -49,11 +47,11 @@ public class Comment {
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-	public Date getTimePosted() {
+	public String getTimePosted() {
 		return timePosted;
 	}
-	public void setTimePosted(Date timePosted) {
-		this.timePosted = timePosted;
+	public void setTimePosted(String string) {
+		this.timePosted = string;
 	}
     
     
