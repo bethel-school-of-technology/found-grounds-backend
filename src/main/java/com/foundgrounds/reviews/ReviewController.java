@@ -1,0 +1,81 @@
+package com.foundgrounds.reviews;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.foundgrounds.reviews.Review;
+import com.foundgrounds.reviews.ReviewRepository;
+import com.foundgrounds.users.User;
+
+@RestController
+@RequestMapping("/api")
+public class ReviewController {
+
+	@Autowired
+	ReviewRepository dao;
+
+	@GetMapping("/reviews")
+	public List<Review> getReview() {
+		List<Review> foundReviews = dao.findAll();
+		return foundReviews;
+	}
+
+	@GetMapping("/reviews/{id}")
+	public ResponseEntity<Review> getUser(@PathVariable(value = "id") Long id) {
+		Review foundReview = dao.findById(id).orElse(null);
+
+		if (foundReview == null) {
+			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+		}
+		return ResponseEntity.ok(foundReview);
+	}
+
+	@PostMapping("/reviews/{id}")
+	public ResponseEntity<Review> reviewReview(@RequestBody Review review) {
+
+		// saving to DB using instance of the repo interface
+		Review createdReview = dao.save(review);
+
+		// RespEntity crafts response to include correct status codes.
+		return ResponseEntity.ok(createdReview);
+	}
+
+	@PutMapping("/reviews/{id}")
+	public ResponseEntity<Review> putReview(@PathVariable Long id, @RequestBody Review review) {
+		Review foundReview = dao.findById(id).orElse(null);
+		if (foundReview == null) {
+			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+		} else {
+			if (User.getUsername() != null) {
+				User.setUsername(User.getUsername());
+			}
+			if (User.getPassword() != null) {
+				User.setPassword(User.getPassword());
+			}
+			dao.save(foundReview);
+		}
+		return ResponseEntity.ok(foundReview);
+	}
+
+	@DeleteMapping("/reviews/{id}")
+	public ResponseEntity<Review> deleteReview(@PathVariable(value = "id") Long id) {
+		Review foundReview = dao.findById(id).orElse(null);
+
+		if (foundReview == null) {
+			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+		} else {
+			dao.delete(foundReview);
+		}
+		return ResponseEntity.ok().build();
+	}
+}
