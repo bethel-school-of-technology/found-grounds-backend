@@ -1,4 +1,4 @@
-package com.foundgrounds.users;
+package com.foundgrounds.menu;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import com.foundgrounds.users.UserRepository;
 
 @RestController
 @RequestMapping("/api")
-public class UserController {
+public class MenuController {
 
 	@Autowired
 	UserRepository dao;

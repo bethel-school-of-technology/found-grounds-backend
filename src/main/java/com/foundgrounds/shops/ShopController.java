@@ -32,7 +32,7 @@ public class ShopController {
 		return foundShop;
 	}
 		@GetMapping("/shops/{id}")
-		public ResponseEntity<Shop> getShop(@PathVariable(value = "id") Integer id) {
+		public ResponseEntity<Shop> getShop(@PathVariable(value = "id") Long id) {
 			Shop foundShop = dao.findById(id).orElse(null);
 
 			if (foundShop == null) {
@@ -42,17 +42,17 @@ public class ShopController {
 		}
 
 		@PostMapping("/shops/{id}")
-		public ResponseEntity<Shop> postShop(@RequestBody Shop shops) {
+		public ResponseEntity<Shop> postShop(@RequestBody Shop shop) {
 
 			// saving to DB using instance of the repo interface
-			Shop createdShop = dao.save(shops);
+			Shop createdShop = dao.save(shop);
 
 			// RespEntity crafts response to include correct status codes.
 			return ResponseEntity.ok(createdShop);
 		}
 
 		@PutMapping("/shops/{id}")
-		public ResponseEntity<Shop> putShop(@PathVariable Integer id, @RequestBody Shop shops) {
+		public ResponseEntity<Shop> putShop(@PathVariable Long id, @RequestBody Shop shop) {
 			Shop foundShop = dao.findById(id).orElse(null);
 			if (foundShop == null) {
 				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
@@ -69,7 +69,7 @@ public class ShopController {
 		}
 
 		@DeleteMapping("/shops/{id}")
-		public ResponseEntity<Shop> deleteShop(@PathVariable(value = "id") Integer id) {
+		public ResponseEntity<Shop> deleteShop(@PathVariable(value = "id") Long id) {
 			Shop foundShop = dao.findById(id).orElse(null);
 
 			if (foundShop == null) {

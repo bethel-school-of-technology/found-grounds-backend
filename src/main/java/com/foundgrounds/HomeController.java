@@ -11,11 +11,6 @@ public class HomeController {
 		return "index.html";
 	}
 
-	@RequestMapping("/foods")
-	public String foods() {
-		return "food.html";
-	}
-
 	@RequestMapping("/users")
 	public String users() {
 		return "users.html";
@@ -25,9 +20,30 @@ public class HomeController {
 	public String shops() {
 		return "shops.html";
 	}
-
-	@RequestMapping("/drinks")
-	public String drinks() {
-		return "drinks.html";
+	
+	@RequestMapping("/comments")
+	public String comments() {
+		return "comments.html";
 	}
+	
+	@RequestMapping("/posts")
+	public String posts() {
+		return "posts.html";
+	}
+	
+	@RequestMapping("/reviews")
+	public String reviews() {
+		return "reviews.html";
+	}
+
+	@RequestMapping("/likes")
+	public String likes() {
+		return "likes.html";
+	}
+	
+	@RequestMapping("/menus")
+	public String menus() {
+		return "menus.html";
+	}
+	
 }
