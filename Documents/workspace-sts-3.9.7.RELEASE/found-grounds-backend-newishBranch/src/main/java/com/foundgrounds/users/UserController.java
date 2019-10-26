@@ -23,13 +23,13 @@ public class UserController {
 	@Autowired
 	UserRepository dao;
 
-	@GetMapping("/user")
+	@GetMapping("/users")
 	public List<User> getUsers() {
 		List<User> foundUsers = dao.findAll();
 		return foundUsers;
 	}
 
-	@GetMapping("/user/{userId}")
+	@GetMapping("/users/{userId}")
 	public ResponseEntity<User> getUser(@PathVariable(value = "userId") Integer userId) {
 		User foundUser = dao.findById(userId).orElse(null);
 
@@ -39,7 +39,7 @@ public class UserController {
 		return ResponseEntity.ok(foundUser);
 	}
 
-	@PostMapping("/user")
+	@PostMapping("/users")
 	public ResponseEntity<User> postUser(@RequestBody User user) {
 
 		// saving to DB using instance of the repo interface
@@ -49,7 +49,7 @@ public class UserController {
 		return ResponseEntity.ok(createdUser);
 	}
 
-	@PutMapping("/user/{userId}")
+	@PutMapping("/users/{userId}")
 	public ResponseEntity<User> putUser(@PathVariable Integer userId, @RequestBody User user) {
 		User foundUser = dao.findById(userId).orElse(null);
 		if (foundUser == null) {
@@ -66,7 +66,7 @@ public class UserController {
 		return ResponseEntity.ok(foundUser);
 	}
 
-	@DeleteMapping("/user/{userId}")
+	@DeleteMapping("/users/{userId}")
 	public ResponseEntity<User> deleteUser(@PathVariable(value = "userId") Integer userId) {
 		User foundUser = dao.findById(userId).orElse(null);
 
