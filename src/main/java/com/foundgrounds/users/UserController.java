@@ -24,14 +24,14 @@ public class UserController {
 	UserRepository dao;
 
 	@GetMapping("/user")
-	public List<User> getUser() {
+	public List<User> getUsers() {
 		List<User> foundUsers = dao.findAll();
 		return foundUsers;
 	}
 
-	@GetMapping("/user/{id}")
-	public ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
-		User foundUser = dao.findById(id).orElse(null);
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<User> getUser(@PathVariable(value = "userId") Integer userId) {
+		User foundUser = dao.findById(userId).orElse(null);
 
 		if (foundUser == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
@@ -49,9 +49,9 @@ public class UserController {
 		return ResponseEntity.ok(createdUser);
 	}
 
-	@PutMapping("/user/{id}")
-	public ResponseEntity<User> putUser(@PathVariable Long id, @RequestBody User user) {
-		User foundUser = dao.findById(id).orElse(null);
+	@PutMapping("/user/{userId}")
+	public ResponseEntity<User> putUser(@PathVariable Integer userId, @RequestBody User user) {
+		User foundUser = dao.findById(userId).orElse(null);
 		if (foundUser == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
@@ -66,9 +66,9 @@ public class UserController {
 		return ResponseEntity.ok(foundUser);
 	}
 
-	@DeleteMapping("/user/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable(value = "id") Long id) {
-		User foundUser = dao.findById(id).orElse(null);
+	@DeleteMapping("/user/{userId}")
+	public ResponseEntity<User> deleteUser(@PathVariable(value = "userId") Integer userId) {
+		User foundUser = dao.findById(userId).orElse(null);
 
 		if (foundUser == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
@@ -78,36 +78,5 @@ public class UserController {
 		return ResponseEntity.ok().build();
 	}
 }
-//	public Boolean IsAuthenticated(String UserName, String Password) {
-//		Boolean success = false;
-//		
-//		//Create SQL statement to grab row with username and password
-//		
-//		if() {
-//			success = true;
-//			GetUserInfo();
-//		}
-//		else {
-//			success = false;
-//		}
-//
-//		return success;
-//
-//	}
-//	
-//	public static void InsertUser() {
-//		
-//		//Create a sql statement that takes the User info and
-//		//Inserts it into the database. 
-//	}
-//	
-//	public User GetUserInfo() {
-//		User newUser = new User();
-//
-//		newUser{
-//			
-//		}
-//		
-//		return newUser
-//	}
+
 

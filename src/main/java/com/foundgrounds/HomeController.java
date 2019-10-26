@@ -45,5 +45,14 @@ public class HomeController {
 	public String menus() {
 		return "menus.html";
 	}
+	@RequestMapping("/thumbsup")
+	public String thumbsup() {
+		return "thumbsup.html";
+	}
+	@RequestMapping("/roles")
+	public String roles() {
+		return "roles.html";
+	}
+	
 	
 }

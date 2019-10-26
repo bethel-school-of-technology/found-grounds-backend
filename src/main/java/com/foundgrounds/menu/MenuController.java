@@ -14,45 +14,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.users.User;
-import com.foundgrounds.users.UserRepository;
+import com.foundgrounds.menu.Menu;
+import com.foundgrounds.menu.MenuRepository;
 
 @RestController
 @RequestMapping("/api")
 public class MenuController {
 
 	@Autowired
-	UserRepository dao;
+	MenuRepository dao;
 
-	@GetMapping("/user")
-	public List<User> getUser() {
-		List<User> foundUsers = dao.findAll();
-		return foundUsers;
+	@GetMapping("/menu")
+	public List<Menu> getMenu() {
+		List<Menu> foundMenu = dao.findAll();
+		return foundMenu;
 	}
 
-	@GetMapping("/user/{id}")
-	public ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
-		User foundUser = dao.findById(id).orElse(null);
+	@GetMapping("/menu/{menuId}")
+	public ResponseEntity<Menu> getMenu(@PathVariable(value = "menuId") Integer menuId) {
+		Menu foundMenu = dao.findById(menuId).orElse(null);
 
-		if (foundUser == null) {
+		if (foundMenu == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		}
-		return ResponseEntity.ok(foundUser);
+		return ResponseEntity.ok(foundMenu);
 	}
 
-	@PostMapping("/user")
-	public ResponseEntity<User> postUser(@RequestBody User user) {
+	@PostMapping("/menu")
+	public ResponseEntity<Menu> postMenu(@RequestBody Menu menu) {
 
 		// saving to DB using instance of the repo interface
-		User createdUser = dao.save(user);
+		Menu createdMenu = dao.save(menu);
 
 		// RespEntity crafts response to include correct status codes.
-		return ResponseEntity.ok(createdUser);
+		return ResponseEntity.ok(createdMenu);
 	}
 
-	@PutMapping("/user/{id}")
-	public ResponseEntity<User> putUser(@PathVariable Long id, @RequestBody User user) {
-		User foundUser = dao.findById(id).orElse(null);
-		if (foundUser == null) {
+	@PutMapping("/menu/{menuId}")
+	public ResponseEntity<Menu> putMenu(@PathVariable Integer menuId, @RequestBody Menu menu) {
+		Menu foundMenu = dao.findById(menuId).orElse(null);
+		if (foundMenu == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
 			if (User.getUsername() != null) {
@@ -61,53 +62,22 @@ public class MenuController {
 			if (User.getPassword() != null) {
 				User.setPassword(User.getPassword());
 			}
-			dao.save(foundUser);
+			dao.save(foundMenu);
 		}
-		return ResponseEntity.ok(foundUser);
+		return ResponseEntity.ok(foundMenu);
 	}
 
-	@DeleteMapping("/user/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable(value = "id") Long id) {
-		User foundUser = dao.findById(id).orElse(null);
+	@DeleteMapping("/menu/{menuId}")
+	public ResponseEntity<Menu> deleteMenu(@PathVariable(value = "menuId") Integer menuId) {
+		Menu foundMenu = dao.findById(menuId).orElse(null);
 
-		if (foundUser == null) {
+		if (foundMenu == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
-			dao.delete(foundUser);
+			dao.delete(foundMenu);
 		}
 		return ResponseEntity.ok().build();
 	}
 }
-//	public Boolean IsAuthenticated(String UserName, String Password) {
-//		Boolean success = false;
-//		
-//		//Create SQL statement to grab row with username and password
-//		
-//		if() {
-//			success = true;
-//			GetUserInfo();
-//		}
-//		else {
-//			success = false;
-//		}
-//
-//		return success;
-//
-//	}
-//	
-//	public static void InsertUser() {
-//		
-//		//Create a sql statement that takes the User info and
-//		//Inserts it into the database. 
-//	}
-//	
-//	public User GetUserInfo() {
-//		User newUser = new User();
-//
-//		newUser{
-//			
-//		}
-//		
-//		return newUser
-//	}
+
 

@@ -25,35 +25,35 @@ public class PostController {
 	PostRepository dao;
 
 	@GetMapping("/posts")
-	public List<Post> getPost() {
-		List<Post> foundMessages = dao.findAll();
-		return foundMessages;
+	public List<Post> getPosts() {
+		List<Post> foundPosts = dao.findAll();
+		return foundPosts;
 	}
 
-	@GetMapping("/posts/{id}")
-	public ResponseEntity<Post> getUser(@PathVariable(value = "id") Long id) {
-		Post foundMessage = dao.findById(id).orElse(null);
+	@GetMapping("/posts/{postId}")
+	public ResponseEntity<Post> getPost(@PathVariable(value = "postId") Integer postId) {
+		Post foundPost = dao.findById(postId).orElse(null);
 
-		if (foundMessage == null) {
+		if (foundPost == null) {
 			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
 		}
-		return ResponseEntity.ok(foundMessage);
+		return ResponseEntity.ok(foundPost);
 	}
 
-	@PostMapping("/posts/{id}")
-	public ResponseEntity<Post> postMessage(@RequestBody Post message) {
+	@PostMapping("/posts/{postId}")
+	public ResponseEntity<Post> postPost(@RequestBody Post post) {
 
 		// saving to DB using instance of the repo interface
-		Post createdMessage = dao.save(message);
+		Post createdPost = dao.save(post);
 
 		// RespEntity crafts response to include correct status codes.
-		return ResponseEntity.ok(createdMessage);
+		return ResponseEntity.ok(createdPost);
 	}
 
-	@PutMapping("/posts/{id}")
-	public ResponseEntity<Post> putMessage(@PathVariable Long id, @RequestBody Post message) {
-		Post foundMessage = dao.findById(id).orElse(null);
-		if (foundMessage == null) {
+	@PutMapping("/posts/{postId}")
+	public ResponseEntity<Post> putPost(@PathVariable Integer postId, @RequestBody Post post) {
+		Post foundPost = dao.findById(postId).orElse(null);
+		if (foundPost == null) {
 			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
 		} else {
 			if (User.getUsername() != null) {
@@ -62,19 +62,19 @@ public class PostController {
 			if (User.getPassword() != null) {
 				User.setPassword(User.getPassword());
 			}
-			dao.save(foundMessage);
+			dao.save(foundPost);
 		}
-		return ResponseEntity.ok(foundMessage);
+		return ResponseEntity.ok(foundPost);
 	}
 
-	@DeleteMapping("/posts/{id}")
-	public ResponseEntity<Post> deleteMessage(@PathVariable(value = "id") Long id) {
-		Post foundMessage = dao.findById(id).orElse(null);
+	@DeleteMapping("/posts/{postId}")
+	public ResponseEntity<Post> deletePost(@PathVariable(value = "postId") Integer postId) {
+		Post foundPost = dao.findById(postId).orElse(null);
 
-		if (foundMessage == null) {
+		if (foundPost == null) {
 			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
 		} else {
-			dao.delete(foundMessage);
+			dao.delete(foundPost);
 		}
 		return ResponseEntity.ok().build();
 	}
