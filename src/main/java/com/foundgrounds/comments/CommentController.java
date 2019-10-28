@@ -43,7 +43,7 @@ public class CommentController {
 		return ResponseEntity.ok(foundComment);
 	}
 
-	@PostMapping("/comments/{commentId}")
+	@PostMapping("/comments")
 	public ResponseEntity<Comment> postComment(@RequestBody Comment comment) {
 		// Sets the date and time of each comment
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -72,7 +72,7 @@ public class CommentController {
 		}
 		return ResponseEntity.ok(foundComment);
 	}
-		
+
 	@DeleteMapping("/comments/{commentId}")
 	public ResponseEntity<Comment> deleteComment(@PathVariable(value = "commentId") Integer commentId) {
 		Comment foundComment = dao.findById(commentId).orElse(null);

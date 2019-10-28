@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.roles.Role;
@@ -17,6 +18,7 @@ import com.foundgrounds.roles.RoleRepository;
 import com.foundgrounds.users.User;
 
 @RestController
+@RequestMapping("/api")
 public class RoleController {
 
 	@Autowired
@@ -34,12 +36,12 @@ public class RoleController {
 		Role foundRole = dao.findById(roleId).orElse(null);
 
 		if (foundRole == null) {
-			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("Roles", "Nothing found with that id").build();
 		}
 		return ResponseEntity.ok(foundRole);
 	}
 
-	@PostMapping("/roles/{roleId}")
+	@PostMapping("/roles")
 	public ResponseEntity<Role> postRole(@RequestBody Role role) {
 
 		// saving to DB using instance of the repo interface
@@ -53,14 +55,14 @@ public class RoleController {
 	public ResponseEntity<Role> putRole(@PathVariable Integer roleId, @RequestBody Role role) {
 		Role foundRole = dao.findById(roleId).orElse(null);
 		if (foundRole == null) {
-			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("Roles", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
 			dao.save(foundRole);
 		}
 		return ResponseEntity.ok(foundRole);
@@ -71,7 +73,7 @@ public class RoleController {
 		Role foundRole = dao.findById(roleId).orElse(null);
 
 		if (foundRole == null) {
-			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
+			return ResponseEntity.notFound().header("Role", "Nothing found with that id").build();
 		} else {
 			dao.delete(foundRole);
 		}

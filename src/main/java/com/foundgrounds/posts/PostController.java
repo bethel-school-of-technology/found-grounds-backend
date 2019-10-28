@@ -40,7 +40,7 @@ public class PostController {
 		return ResponseEntity.ok(foundPost);
 	}
 
-	@PostMapping("/posts/{postId}")
+	@PostMapping("/posts")
 	public ResponseEntity<Post> postPost(@RequestBody Post post) {
 
 		// saving to DB using instance of the repo interface

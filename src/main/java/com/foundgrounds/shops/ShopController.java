@@ -31,7 +31,7 @@ public class ShopController {
 		List<Shop> foundShops = dao.findAll();
 		return foundShops;
 	}
-		@GetMapping("/shops/{shopId}")
+		@GetMapping("shops/{shopId}")
 		public ResponseEntity<Shop> getShop(@PathVariable(value = "shopId") Integer shopId) {
 			Shop foundShop = dao.findById(shopId).orElse(null);
 

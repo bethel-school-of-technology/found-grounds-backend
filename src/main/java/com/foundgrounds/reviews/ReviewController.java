@@ -40,7 +40,7 @@ public class ReviewController {
 		return ResponseEntity.ok(foundReview);
 	}
 
-	@PostMapping("/reviews/{reviewId}")
+	@PostMapping("/reviews")
 	public ResponseEntity<Review> postReview(@RequestBody Review review) {
 
 		// saving to DB using instance of the repo interface

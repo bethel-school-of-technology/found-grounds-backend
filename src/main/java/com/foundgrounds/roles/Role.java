@@ -12,15 +12,15 @@ public class Role {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer rolesId;
+	private Integer roleId;
 	private String description;
 	private Boolean isActive;
 	
-	public Integer getRolesId() {
-		return rolesId;
+	public Integer getRoleId() {
+		return roleId;
 	}
-	public void setRolesId(Integer rolesId) {
-		this.rolesId = rolesId;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 	public String getDescription() {
 		return description;
