@@ -30,9 +30,9 @@ public class ReviewController {
 		return foundReviews;
 	}
 
-	@GetMapping("/reviews/{id}")
-	public ResponseEntity<Review> getUser(@PathVariable(value = "id") Long id) {
-		Review foundReview = dao.findById(id).orElse(null);
+	@GetMapping("/reviews/{reviewId}")
+	public ResponseEntity<Review> getUser(@PathVariable(value = "reviewId") Integer reviewId) {
+		Review foundReview = dao.findById(reviewId).orElse(null);
 
 		if (foundReview == null) {
 			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
@@ -40,8 +40,8 @@ public class ReviewController {
 		return ResponseEntity.ok(foundReview);
 	}
 
-	@PostMapping("/reviews/{id}")
-	public ResponseEntity<Review> reviewReview(@RequestBody Review review) {
+	@PostMapping("/reviews")
+	public ResponseEntity<Review> postReview(@RequestBody Review review) {
 
 		// saving to DB using instance of the repo interface
 		Review createdReview = dao.save(review);
@@ -50,9 +50,9 @@ public class ReviewController {
 		return ResponseEntity.ok(createdReview);
 	}
 
-	@PutMapping("/reviews/{id}")
-	public ResponseEntity<Review> putReview(@PathVariable Long id, @RequestBody Review review) {
-		Review foundReview = dao.findById(id).orElse(null);
+	@PutMapping("/reviews/{reviewId}")
+	public ResponseEntity<Review> putReview(@PathVariable Integer reviewId, @RequestBody Review review) {
+		Review foundReview = dao.findById(reviewId).orElse(null);
 		if (foundReview == null) {
 			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
 		} else {
@@ -67,9 +67,9 @@ public class ReviewController {
 		return ResponseEntity.ok(foundReview);
 	}
 
-	@DeleteMapping("/reviews/{id}")
-	public ResponseEntity<Review> deleteReview(@PathVariable(value = "id") Long id) {
-		Review foundReview = dao.findById(id).orElse(null);
+	@DeleteMapping("/reviews/{reviewId}")
+	public ResponseEntity<Review> deleteReview(@PathVariable(value = "reviewId") Integer reviewId) {
+		Review foundReview = dao.findById(reviewId).orElse(null);
 
 		if (foundReview == null) {
 			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();

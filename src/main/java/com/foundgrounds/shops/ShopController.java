@@ -27,13 +27,13 @@ public class ShopController {
 	ShopRepository dao;
 	
 	@GetMapping("/shops")
-	public List<Shop> getShop() {
-		List<Shop> foundShop = dao.findAll();
-		return foundShop;
+	public List<Shop> getShops() {
+		List<Shop> foundShops = dao.findAll();
+		return foundShops;
 	}
-		@GetMapping("/shops/{id}")
-		public ResponseEntity<Shop> getShop(@PathVariable(value = "id") Long id) {
-			Shop foundShop = dao.findById(id).orElse(null);
+		@GetMapping("shops/{shopId}")
+		public ResponseEntity<Shop> getShop(@PathVariable(value = "shopId") Integer shopId) {
+			Shop foundShop = dao.findById(shopId).orElse(null);
 
 			if (foundShop == null) {
 				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
@@ -41,7 +41,7 @@ public class ShopController {
 			return ResponseEntity.ok(foundShop);
 		}
 
-		@PostMapping("/shops/{id}")
+		@PostMapping("/shops/{shopId}")
 		public ResponseEntity<Shop> postShop(@RequestBody Shop shop) {
 
 			// saving to DB using instance of the repo interface
@@ -51,9 +51,9 @@ public class ShopController {
 			return ResponseEntity.ok(createdShop);
 		}
 
-		@PutMapping("/shops/{id}")
-		public ResponseEntity<Shop> putShop(@PathVariable Long id, @RequestBody Shop shop) {
-			Shop foundShop = dao.findById(id).orElse(null);
+		@PutMapping("/shops/{shopId}")
+		public ResponseEntity<Shop> putShop(@PathVariable Integer shopId, @RequestBody Shop shop) {
+			Shop foundShop = dao.findById(shopId).orElse(null);
 			if (foundShop == null) {
 				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
 			} else {
@@ -68,9 +68,9 @@ public class ShopController {
 			return ResponseEntity.ok(foundShop);
 		}
 
-		@DeleteMapping("/shops/{id}")
-		public ResponseEntity<Shop> deleteShop(@PathVariable(value = "id") Long id) {
-			Shop foundShop = dao.findById(id).orElse(null);
+		@DeleteMapping("/shops/{shopId}")
+		public ResponseEntity<Shop> deleteShop(@PathVariable(value = "shopId") Integer shopId) {
+			Shop foundShop = dao.findById(shopId).orElse(null);
 
 			if (foundShop == null) {
 				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();

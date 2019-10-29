@@ -28,14 +28,14 @@ public class CommentController {
 	CommentRepository dao;
 
 	@GetMapping("/comments")
-	public List<Comment> getComment() {
+	public List<Comment> getComments() {
 		List<Comment> foundComments = dao.findAll();
 		return foundComments;
 	}
 
-	@GetMapping("/comments/{id}")
-	public ResponseEntity<Comment> getUser(@PathVariable(value = "id") Long id) {
-		Comment foundComment = dao.findById(id).orElse(null);
+	@GetMapping("/comments/{commentId}")
+	public ResponseEntity<Comment> getComment(@PathVariable(value = "commentId") Integer commentId) {
+		Comment foundComment = dao.findById(commentId).orElse(null);
 
 		if (foundComment == null) {
 			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
@@ -43,7 +43,7 @@ public class CommentController {
 		return ResponseEntity.ok(foundComment);
 	}
 
-	@PostMapping("/comments/{id}")
+	@PostMapping("/comments")
 	public ResponseEntity<Comment> postComment(@RequestBody Comment comment) {
 		// Sets the date and time of each comment
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -56,9 +56,9 @@ public class CommentController {
 		return ResponseEntity.ok(createdComment);
 	}
 
-	@PutMapping("/comments/{id}")
-	public ResponseEntity<Comment> putComment(@PathVariable Long id, @RequestBody Comment comment) {
-		Comment foundComment = dao.findById(id).orElse(null);
+	@PutMapping("/comments/{commentId}")
+	public ResponseEntity<Comment> putComment(@PathVariable Integer commentId, @RequestBody Comment comment) {
+		Comment foundComment = dao.findById(commentId).orElse(null);
 		if (foundComment == null) {
 			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
 		} else {
@@ -73,9 +73,9 @@ public class CommentController {
 		return ResponseEntity.ok(foundComment);
 	}
 
-	@DeleteMapping("/comments/{id}")
-	public ResponseEntity<Comment> deleteComment(@PathVariable(value = "id") Long id) {
-		Comment foundComment = dao.findById(id).orElse(null);
+	@DeleteMapping("/comments/{commentId}")
+	public ResponseEntity<Comment> deleteComment(@PathVariable(value = "commentId") Integer commentId) {
+		Comment foundComment = dao.findById(commentId).orElse(null);
 
 		if (foundComment == null) {
 			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();

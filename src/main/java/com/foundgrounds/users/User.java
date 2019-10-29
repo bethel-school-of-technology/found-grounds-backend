@@ -7,16 +7,15 @@ import javax.persistence.*;
 @Entity
 @Table(name="User")
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userID;
-	private Integer rolesID;
-	private String email;
-	private static String username;
-	private static String password;
-	private String authToken;
-	private String firstName;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long userId;
+  private static String username;
+  private static String password;
+  private Integer rolesID;
+  private String email;
+  private String authToken;
+  private String firstName;
 	private String lastName;
 	private Boolean canAdvertise; 
 	private String streetAddress1;
@@ -30,25 +29,11 @@ public class User {
 	private Boolean deleted;
 	private Date dateJoined;
 	private String bio;
-	
-	
-	public Integer getUserID() {
-		return userID;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUserID(Integer userID) {
-		this.userID = userID;
-	}
-	public Integer getRolesID() {
-		return rolesID;
-	}
-	public void setRolesID(Integer rolesID) {
-		this.rolesID = rolesID;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public static String getUsername() {
 		return username;
@@ -61,6 +46,18 @@ public class User {
 	}
 	public static void setPassword(String password) {
 		User.password = password;
+	}
+	public Integer getRolesID() {
+		return rolesID;
+	}
+	public void setRolesID(Integer rolesID) {
+		this.rolesID = rolesID;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getAuthToken() {
 		return authToken;
@@ -153,7 +150,12 @@ public class User {
 		this.bio = bio;
 	}
 	
+  
+
+}
+
+	
 	
 
 	
-}
+	
