@@ -5,7 +5,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Reviews")
+@Table(name="Review")
 public class Review {
 
 	@Id
@@ -16,7 +16,7 @@ public class Review {
 	private String text;
 	private Integer rating;
 	private Boolean deleted;
-	private Date timePosted;
+	private String timePosted;
 	
 	public Integer getReviewId() {
 		return reviewId;
@@ -54,10 +54,10 @@ public class Review {
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-	public Date getTimePosted() {
+	public String getTimePosted() {
 		return timePosted;
 	}
-	public void setTimePosted(Date timePosted) {
+	public void setTimePosted(String timePosted) {
 		this.timePosted = timePosted;
 	}
 	

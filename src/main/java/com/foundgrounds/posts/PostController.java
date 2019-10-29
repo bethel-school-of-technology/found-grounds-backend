@@ -1,5 +1,8 @@
 package com.foundgrounds.posts;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +45,10 @@ public class PostController {
 
 	@PostMapping("/posts")
 	public ResponseEntity<Post> postPost(@RequestBody Post post) {
-
+		// Sets the date and time of each comment
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		Date date = new Date();
+		post.setTimePosted(dateFormat.format(date));
 		// saving to DB using instance of the repo interface
 		Post createdPost = dao.save(post);
 

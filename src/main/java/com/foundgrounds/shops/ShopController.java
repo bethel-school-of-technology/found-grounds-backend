@@ -41,7 +41,7 @@ public class ShopController {
 			return ResponseEntity.ok(foundShop);
 		}
 
-		@PostMapping("/shops/{shopId}")
+		@PostMapping("/shops")
 		public ResponseEntity<Shop> postShop(@RequestBody Shop shop) {
 
 			// saving to DB using instance of the repo interface

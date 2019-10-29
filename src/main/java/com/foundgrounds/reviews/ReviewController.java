@@ -1,5 +1,8 @@
 package com.foundgrounds.reviews;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +45,10 @@ public class ReviewController {
 
 	@PostMapping("/reviews")
 	public ResponseEntity<Review> postReview(@RequestBody Review review) {
-
+		// Sets the date and time of each comment
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		Date date = new Date();
+		review.setTimePosted(dateFormat.format(date));
 		// saving to DB using instance of the repo interface
 		Review createdReview = dao.save(review);
 
