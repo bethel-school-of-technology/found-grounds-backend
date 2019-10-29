@@ -9,10 +9,10 @@ import javax.persistence.*;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long userId;
+  private Integer userId;
   private static String username;
   private static String password;
-  private Integer rolesID;
+  private Integer roleId;
   private String email;
   private String authToken;
   private String firstName;
@@ -29,10 +29,13 @@ public class User {
 	private Boolean deleted;
 	private Date dateJoined;
 	private String bio;
-	public Long getUserId() {
+	private Boolean edited;
+	
+	
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public static String getUsername() {
@@ -47,11 +50,11 @@ public class User {
 	public static void setPassword(String password) {
 		User.password = password;
 	}
-	public Integer getRolesID() {
-		return rolesID;
+	public Integer getRoleId() {
+		return roleId;
 	}
-	public void setRolesID(Integer rolesID) {
-		this.rolesID = rolesID;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 	public String getEmail() {
 		return email;
@@ -148,6 +151,12 @@ public class User {
 	}
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+	public Boolean getEdited() {
+		return edited;
+	}
+	public void setEdited(Boolean edited) {
+		this.edited = edited;
 	}
 	
   

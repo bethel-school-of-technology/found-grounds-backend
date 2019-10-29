@@ -47,11 +47,11 @@ public class Post {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public String getImage_Url() {
+	public String getImageUrl() {
 		return imageUrl;
 	}
-	public void setImage_Url(String image_Url) {
-		this.imageUrl = image_Url;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	public Boolean getDeleted() {
 		return deleted;

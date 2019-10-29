@@ -50,8 +50,8 @@ public class Comment {
 	public String getTimePosted() {
 		return timePosted;
 	}
-	public void setTimePosted(String string) {
-		this.timePosted = string;
+	public void setTimePosted(String timePosted) {
+		this.timePosted = timePosted;
 	}
     
     
