@@ -4,7 +4,7 @@ package com.foundgrounds.comments;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Comments")
+@Table(name="comments")
 public class Comment {
 
     @Id

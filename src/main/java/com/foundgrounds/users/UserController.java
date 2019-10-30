@@ -1,6 +1,6 @@
 package com.foundgrounds.users;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +51,7 @@ public class UserController {
 		return ResponseEntity.ok(createdUser);
 	}
 
+	@SuppressWarnings("static-access")
 	@PutMapping("/users/{userId}")
 	public ResponseEntity<User> putUser(@PathVariable Integer userId, @RequestBody User user) {
 		User foundUser = dao.findById(userId).orElse(null);

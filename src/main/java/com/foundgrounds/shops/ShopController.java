@@ -1,7 +1,7 @@
 package com.foundgrounds.shops;
 
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.shops.Shop;
 import com.foundgrounds.shops.ShopRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 
 @RestController

@@ -1,6 +1,6 @@
 package com.foundgrounds.menu;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.menu.Menu;
 import com.foundgrounds.menu.MenuRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")

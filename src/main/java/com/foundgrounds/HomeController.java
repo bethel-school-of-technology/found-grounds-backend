@@ -1,6 +1,13 @@
 package com.foundgrounds;
 
+//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+
+//import com.foundgrounds.shops.Shop;
+//import com.foundgrounds.shops.ShopRepository;
+
+
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -25,6 +32,14 @@ public class HomeController {
 	public String comments() {
 		return "comments.html";
 	}
+	
+//	This might be another way to set the params:
+//	@GetMapping("/comments")
+//	public String shopsParam(@RequestParam String group, Shop comment) {
+//		{ comment.addAttribute("comment", comment.ShopRepository(group)); This part isn't right
+//		}
+//		return "view.html";
+//	}
 	
 	@RequestMapping("/posts")
 	public String posts() {

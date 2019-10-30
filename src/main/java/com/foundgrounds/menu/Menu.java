@@ -6,7 +6,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Menu")
+@Table(name="menu")
 public class Menu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
