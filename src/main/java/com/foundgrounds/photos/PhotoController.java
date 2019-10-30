@@ -1,6 +1,6 @@
 package com.foundgrounds.photos;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.photos.Photo;
 import com.foundgrounds.photos.PhotoRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")

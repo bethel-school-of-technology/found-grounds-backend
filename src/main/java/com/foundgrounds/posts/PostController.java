@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.posts.Post;
 import com.foundgrounds.posts.PostRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.roles.Role;
 import com.foundgrounds.roles.RoleRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")

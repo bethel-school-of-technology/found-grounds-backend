@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.foundgrounds.thumbsup.ThumbsUp;
 import com.foundgrounds.thumbsup.ThumbsUpRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")

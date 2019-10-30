@@ -1,11 +1,11 @@
 package com.foundgrounds.reviews;
 
-import java.sql.Date;
+//import java.sql.Date;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="Review")
+@Table(name="review")
 public class Review {
 
 	@Id

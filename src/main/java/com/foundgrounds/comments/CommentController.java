@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+//import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,26 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 import com.foundgrounds.comments.Comment;
 import com.foundgrounds.comments.CommentRepository;
-import com.foundgrounds.users.User;
+//import com.foundgrounds.users.User;
 
 @RestController
 @RequestMapping("/api")
 public class CommentController {
+	
+//	This is how to set up the Params
+//	private static final Logger LOGGER = Logger.getLogger(CommentController.class.getName());
+//
+//	
+//	@RequestMapping(params = "text")
+//    public String handleEmployeeRequestByDept (@RequestParam("comment") String text, Model map) {
+//        LOGGER.info("employee request by comment : " + text);
+//        map.addAttribute("comment request by field: " + text);
+//        return "my-page";
+//    }
 
 	@Autowired
 	CommentRepository dao;
