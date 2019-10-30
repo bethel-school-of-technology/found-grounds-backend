@@ -62,12 +62,17 @@ public class CommentController {
 		if (foundComment == null) {
 			return ResponseEntity.notFound().header("Comment", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundComment.setPostId(comment.getPostId());
+			foundComment.setUserId(comment.getUserId());
+			foundComment.setText(comment.getText());
+			foundComment.setDeleted(comment.getDeleted());
+			foundComment.setTimePosted(comment.getTimePosted());
 			dao.save(foundComment);
 		}
 		return ResponseEntity.ok(foundComment);

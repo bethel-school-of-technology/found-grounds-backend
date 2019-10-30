@@ -62,12 +62,21 @@ public class PostController {
 		if (foundPost == null) {
 			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			
+			foundPost.setUserId(post.getUserId());
+			foundPost.setShopId(post.getShopId());
+			foundPost.setText(post.getText());
+			foundPost.setImageUrl(post.getImageUrl());
+			foundPost.setDeleted(post.getDeleted());
+			foundPost.setEdited(post.getEdited());
+			foundPost.setTimePosted(post.getTimePosted());
+			
 			dao.save(foundPost);
 		}
 		return ResponseEntity.ok(foundPost);

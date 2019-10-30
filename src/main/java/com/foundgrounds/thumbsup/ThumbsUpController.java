@@ -58,12 +58,16 @@ public class ThumbsUpController {
 		if (foundThumbsUp == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundThumbsUp.setPostId(thumbsUp.getPostId());
+			foundThumbsUp.setUserId(thumbsUp.getUserId());
+			foundThumbsUp.setThumbsUp(thumbsUp.getThumbsUp());
+
 			dao.save(foundThumbsUp);
 		}
 		return ResponseEntity.ok(foundThumbsUp);

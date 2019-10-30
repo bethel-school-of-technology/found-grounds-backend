@@ -55,7 +55,7 @@ public class RoleController {
 	public ResponseEntity<Role> putRole(@PathVariable Integer roleId, @RequestBody Role role) {
 		Role foundRole = dao.findById(roleId).orElse(null);
 		if (foundRole == null) {
-			return ResponseEntity.notFound().header("Roles", "Nothing found with that id").build();
+			//return ResponseEntity.notFound().header("Roles", "Nothing found with that id").build();
 		} else {
 //			if (User.getUsername() != null) {
 //				User.setUsername(User.getUsername());
@@ -63,6 +63,8 @@ public class RoleController {
 //			if (User.getPassword() != null) {
 //				User.setPassword(User.getPassword());
 //			}
+			foundRole.setDescription(role.getDescription());
+			foundRole.setIsActive(role.getIsActive());
 			dao.save(foundRole);
 		}
 		return ResponseEntity.ok(foundRole);
