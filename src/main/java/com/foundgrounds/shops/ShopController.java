@@ -1,6 +1,7 @@
 package com.foundgrounds.shops;
 
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,12 +58,25 @@ public class ShopController {
 			if (foundShop == null) {
 				return ResponseEntity.notFound().header("Shop", "Nothing found with that id").build();
 			} else {
-				if (User.getUsername() != null) {
-					User.setUsername(User.getUsername());
-				}
-				if (User.getPassword() != null) {
-					User.setPassword(User.getPassword());
-				}
+//				if (User.getUsername() != null) {
+//					User.setUsername(User.getUsername());
+//				}
+//				if (User.getPassword() != null) {
+//					User.setPassword(User.getPassword());
+//				}
+				
+				foundShop.setAbout(shop.getAbout());
+				foundShop.setName(shop.getName());
+				foundShop.setStreetAddress1(shop.getStreetAddress1());
+				foundShop.setStreetAddress2(shop.getStreetAddress2());
+				foundShop.setCity(shop.getCity());
+				foundShop.setState(shop.getState());
+				foundShop.setZip(shop.getZip());
+				foundShop.setHoursOfOperation(shop.getHoursOfOperation());
+				foundShop.setRating(shop.getRating());
+				foundShop.setImageUrl(shop.getImageUrl());
+				foundShop.setDeleted(shop.getDeleted());
+
 				dao.save(foundShop);
 			}
 			return ResponseEntity.ok(foundShop);

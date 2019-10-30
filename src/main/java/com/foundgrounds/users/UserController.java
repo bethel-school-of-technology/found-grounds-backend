@@ -1,5 +1,6 @@
 package com.foundgrounds.users;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,12 +57,33 @@ public class UserController {
 		if (foundUser == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundUser.setUsername(user.getUsername());
+			foundUser.setPassword(user.getPassword());
+			foundUser.setRoleId(user.getRoleId());
+			foundUser.setEmail(user.getEmail());
+			foundUser.setAuthToken(user.getAuthToken());
+			foundUser.setFirstName(user.getFirstName());
+			foundUser.setLastName(user.getLastName());
+			foundUser.setCanAdvertise(user.getCanAdvertise());
+			foundUser.setStreetAddress1(user.getStreetAddress1());
+			foundUser.setStreetAddress2(user.getStreetAddress2());
+			foundUser.setCity(user.getCity());
+			foundUser.setState(user.getState());
+			foundUser.setZip(user.getZip());
+			foundUser.setAmHome(user.getAmHome());
+			foundUser.setBirthday(user.getBirthday());
+			foundUser.setImageUrl(user.getImageUrl());
+			foundUser.setDeleted(user.getDeleted());
+			foundUser.setDateJoined(user.getDateJoined());
+			foundUser.setBio(user.getBio());
+			foundUser.setEdited(user.getEdited());
+			
 			dao.save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);

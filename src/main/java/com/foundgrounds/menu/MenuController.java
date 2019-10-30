@@ -1,5 +1,6 @@
 package com.foundgrounds.menu;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -57,12 +58,20 @@ public class MenuController {
 		if (foundMenu == null) {
 			return ResponseEntity.notFound().header("User", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundMenu.setItemId(menu.getItemId());
+			foundMenu.setShopId(menu.getShopId());
+			foundMenu.setName(menu.getName());
+			foundMenu.setText(menu.getText());
+			foundMenu.setImageUrl(menu.getImageUrl());
+			foundMenu.setDeleted(menu.getDeleted());
+			foundMenu.setTimePosted(menu.getTimePosted());
+
 			dao.save(foundMenu);
 		}
 		return ResponseEntity.ok(foundMenu);

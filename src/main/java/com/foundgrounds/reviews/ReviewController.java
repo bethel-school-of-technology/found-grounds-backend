@@ -62,12 +62,19 @@ public class ReviewController {
 		if (foundReview == null) {
 			return ResponseEntity.notFound().header("Review", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundReview.setShopId(review.getShopId());
+			foundReview.setUserId(review.getUserId());
+			foundReview.setText(review.getText());
+			foundReview.setRating(review.getRating());
+			foundReview.setDeleted(review.getDeleted());
+			foundReview.setTimePosted(review.getTimePosted());
+			
 			dao.save(foundReview);
 		}
 		return ResponseEntity.ok(foundReview);

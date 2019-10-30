@@ -1,5 +1,6 @@
 package com.foundgrounds.photos;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,12 +58,18 @@ public class PhotoController {
 		if (foundPhoto == null) {
 			return ResponseEntity.notFound().header("Message", "Nothing found with that id").build();
 		} else {
-			if (User.getUsername() != null) {
-				User.setUsername(User.getUsername());
-			}
-			if (User.getPassword() != null) {
-				User.setPassword(User.getPassword());
-			}
+//			if (User.getUsername() != null) {
+//				User.setUsername(User.getUsername());
+//			}
+//			if (User.getPassword() != null) {
+//				User.setPassword(User.getPassword());
+//			}
+			foundPhoto.setPostId(photo.getPostId());
+			foundPhoto.setShopId(photo.getShopId());
+			foundPhoto.setImageUrl(photo.getImageUrl());
+			foundPhoto.setDeleted(photo.getDeleted());
+			foundPhoto.setTimePosted(photo.getTimePosted());
+
 			dao.save(foundPhoto);
 		}
 		return ResponseEntity.ok(foundPhoto);
