@@ -10,8 +10,8 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer userId;
-  private static String username;
-  private static String password;
+  private String username;
+  private String password;
   private Integer roleId;
   private String email;
   private String authToken;
