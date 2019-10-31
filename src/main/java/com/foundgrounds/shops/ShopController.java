@@ -77,7 +77,7 @@ public class ShopController {
 				foundShop.setRating(shop.getRating());
 				foundShop.setImageUrl(shop.getImageUrl());
 				foundShop.setDeleted(shop.getDeleted());
-				foundShop.setAdminID(shop.getAdminId());
+				foundShop.setAdminId(shop.getAdminId());
 
 				dao.save(foundShop);
 			}
