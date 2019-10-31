@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer shopID;
+	private Integer shopId;
     private String about;
 	private String name;
 	private String streetAddress1;
@@ -25,12 +25,13 @@ public class Shop {
 	private Integer rating;
 	private String imageUrl;
 	private Boolean deleted;
+	private Integer adminId;
 	
-	public Integer getShopID() {
-		return shopID;
+	public Integer getShopId() {
+		return shopId;
 	}
-	public void setShopID(Integer shopID) {
-		this.shopID = shopID;
+	public void setShopID(Integer shopId) {
+		this.shopId = shopId;
 	}
 	public String getAbout() {
 		return about;
@@ -98,7 +99,12 @@ public class Shop {
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-	
+	public Integer getAdminId() {
+		return adminId;
+	}
+	public void setAdminID(Integer adminId) {
+		this.adminId = adminId;
+	}
 	
 	
 }

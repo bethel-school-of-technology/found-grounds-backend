@@ -10,8 +10,8 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer userId;
-  private static String username;
-  private static String password;
+  private String username;
+  private String password;
   private Integer roleId;
   private String email;
   private String authToken;
@@ -38,17 +38,17 @@ public class User {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public static String getUsername() {
+	public String getUsername() {
 		return username;
 	}
-	public static void setUsername(String username) {
-		User.username = username;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public static String getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public static void setPassword(String password) {
-		User.password = password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Integer getRoleId() {
 		return roleId;
