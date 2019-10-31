@@ -3,6 +3,9 @@ package com.foundgrounds.posts;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,10 @@ public class PostController {
 
 	@PostMapping("/posts")
 	public ResponseEntity<Post> postPost(@RequestBody Post post) {
+		// Sets the date and time of each comment
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		Date date = new Date();
+		post.setTimePosted(dateFormat.format(date));
 		// saving to DB using instance of the repo interface
 		Post createdPost = dao.save(post);
 
@@ -66,7 +73,7 @@ public class PostController {
 //			if (User.getPassword() != null) {
 //				User.setPassword(User.getPassword());
 //			}
-			
+
 			foundPost.setUserId(post.getUserId());
 			foundPost.setShopId(post.getShopId());
 			foundPost.setText(post.getText());
@@ -74,7 +81,7 @@ public class PostController {
 			foundPost.setDeleted(post.getDeleted());
 			foundPost.setEdited(post.getEdited());
 			foundPost.setTimePosted(post.getTimePosted());
-			
+
 			dao.save(foundPost);
 		}
 		return ResponseEntity.ok(foundPost);

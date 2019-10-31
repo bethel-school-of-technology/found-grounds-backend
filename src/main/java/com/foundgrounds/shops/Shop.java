@@ -30,7 +30,7 @@ public class Shop {
 	public Integer getShopId() {
 		return shopId;
 	}
-	public void setShopID(Integer shopId) {
+	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
 	public String getAbout() {
@@ -102,7 +102,7 @@ public class Shop {
 	public Integer getAdminId() {
 		return adminId;
 	}
-	public void setAdminID(Integer adminId) {
+	public void setAdminId(Integer adminId) {
 		this.adminId = adminId;
 	}
 	
