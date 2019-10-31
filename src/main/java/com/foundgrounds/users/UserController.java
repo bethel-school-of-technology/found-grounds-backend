@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.foundgrounds.users.User;
 import com.foundgrounds.users.UserRepository;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
 @RequestMapping("/api")
 public class UserController {
 
 	@Autowired
 	UserRepository dao;
-
 	
 	@GetMapping("/users")
 	public List<User> getUsers() {
