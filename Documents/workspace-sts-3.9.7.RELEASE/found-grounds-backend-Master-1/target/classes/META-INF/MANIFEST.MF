@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: DillonPriya
+Build-Jdk: 11.0.1
+Implementation-Title: FoundGrounds
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.foundgrounds
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/FoundGrounds
+Created-By: Maven Integration for Eclipse
+
